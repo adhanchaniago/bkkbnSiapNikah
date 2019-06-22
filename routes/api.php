@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::namespace('Question\Api')->prefix('/question')->group(function(){
+    Route::get('/list','IndexController@index');
+});
+Route::namespace('Category\Api')->prefix('/category')->group(function(){
+    Route::get('/list','IndexController@index');
+});

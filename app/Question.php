@@ -14,4 +14,7 @@ class Question extends Model
     protected $fillable = [
         'question','answer','correctAnswerRecommendation','wrongAnswerRecommendation','categoryId', 'gender'
     ];
+    public function category(){
+        return $this->belongsTo(Category::class,'categoryId');
+    }
 }

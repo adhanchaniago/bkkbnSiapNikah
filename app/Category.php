@@ -14,4 +14,12 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+
+    /**
+     * GET the questions for each category
+     * 
+     */
+    public function questions(){
+        return $this->hasMany(Question::class,'categoryId');
+    }
 }
