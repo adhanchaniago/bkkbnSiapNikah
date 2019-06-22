@@ -41,6 +41,7 @@ class CreateController extends Controller
             'wrongAnswerRecommendation' => $request->wrongAnswerRecommendation,
             'categoryId' => $categoryId,
         ]);
+        dd($question);
         return redirect('/category/detail/id/'.$categoryId);
     }
 }

@@ -27,4 +27,9 @@ Route::namespace('Category')->prefix('/category')->name('category.')->group(func
 });
 Route::namespace('Question')->prefix('/category/detail')->name('category.detail.')->group(function(){
     Route::get('/id/{id}', 'IndexController@index')->name('id');
+    Route::prefix('/question')->name('question.')->group(function(){
+        Route::post('create/{categoryId}','CreateController@create')->name('create');
+        Route::get('edit/{categoryId}/{questionId}','EditController@index')->name('edit.page');
+        Route::post('edit/{categoryId}/{questionId}','EditController@edit')->name('edit');
+    });
 });

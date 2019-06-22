@@ -31,27 +31,27 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" method="POST" action="{{route('category.edit',['id'=>$category->id])}}">
+                    <form role="form" method="POST" action="{{route('category.detail.question.create',['categoryId'=>$category->id])}}">
                         @csrf
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="">Pertanyaan</label>
-                                <input type="text" class="form-control" id="" name="name" required>
+                                <input type="text" class="form-control" id="" name="question" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Jawaban yang benar</label>
-                                <select class="form-control">
-                                    <option>Ya</option>
-                                    <option>Tidak</option>
+                                <select class="form-control" name="answer" required>
+                                    <option value="1">Ya</option>
+                                    <option value="0">Tidak</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Rekomendasi Bila Jawaban Benar</label>
-                                <input type="text" class="form-control" id="" name="name" required>
+                                <textarea class="form-control" rows="4" placeholder="" name="correctAnswerRecommendation" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="">Rekomendasi Bila Jawaban Salah</label>
-                                <input type="text" class="form-control" id="" name="name" required>
+                                <textarea class="form-control" rows="4" placeholder="" name="wrongAnswerRecommendation" required></textarea>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -74,8 +74,8 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px; text-align:center">No</th>
-                                    <th>Name</th>
-                                    <th style="width:50px; text-align:center">Edit</th>
+                                    <th>Pertanyaan</th>
+                                    <th style="width:50px; text-align:left">Ubah</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -83,15 +83,15 @@
                                 <tr>
                                     <td>{{$i+1}}</td>
                                     <td>{{$questions[$i]->question}}</td>
-                                    <td><a href="{{route('category.edit.page',['id'=>$questions[$i]->id])}}"><button type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></a></td>
+                                    <td><a href="{{route('category.detail.question.edit.page',['categoryId'=>$category->id,'questionId'=>$questions[$i]->id])}}"><button type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></a></td>
                                 </tr>
                                 @endfor
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
-                                    <th>Edit</th>
+                                    <th>Pertanyaan</th>
+                                    <th>Ubah</th>
                                 </tr>
                             </tfoot>
                         </table>

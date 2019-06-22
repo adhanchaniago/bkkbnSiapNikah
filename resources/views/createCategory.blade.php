@@ -71,15 +71,15 @@
                             <thead>
                                 <tr>
                                     <th style="width:10px; text-align:center">No</th>
-                                    <th>Name</th>
-                                    <th style="width:50px; text-align:center">Edit</th>
+                                    <th>Kategori</th>
+                                    <th style="width:50px; text-align:left">Ubah</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @for ($i = 0; $i < count($categories); $i++)
                                 <tr>
                                     <td>{{$i+1}}</td>
-                                    <td>{{$categories[$i]->name}}</td>
+                                    <td><a href="{{route('category.detail.id',['id'=>$categories[$i]->id])}}">{{$categories[$i]->name}}</a></td>
                                     <td><a href="{{route('category.edit.page',['id'=>$categories[$i]->id])}}"><button type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></a></td>
                                 </tr>
                                 @endfor
@@ -87,8 +87,8 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
-                                    <th>Edit</th>
+                                    <th>Kategori</th>
+                                    <th>Ubah</th>
                                 </tr>
                             </tfoot>
                         </table>
