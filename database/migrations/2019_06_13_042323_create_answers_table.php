@@ -20,7 +20,7 @@ class CreateAnswersTable extends Migration
             $table->string('location');
             $table->decimal('longitude');
             $table->decimal('latitude');
-            $table->json('answer')->nullable();
+            $table->text('answer');
             $table->timestamps();
         });
     }
