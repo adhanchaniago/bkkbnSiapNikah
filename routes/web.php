@@ -33,3 +33,11 @@ Route::namespace('Question')->prefix('/category/detail')->name('category.detail.
         Route::post('edit/{categoryId}/{questionId}','EditController@edit')->name('edit');
     });
 });
+Route::namespace('User')->prefix('/user-management')->name('user.management.')->group(function(){
+    Route::get('/','IndexController@index')->name('index');
+    Route::post('/create','CreateController@register')->name('create');
+    Route::get('/edit/{userId}','EditController@index')->name('edit.page');
+    Route::post('/edit/{userId}','EditController@edit')->name('edit');
+    Route::get('/delete/{userId}','DeleteController@index')->name('delete.page');
+    Route::post('/delete/{userId}','DeleteController@remove')->name('delete');
+});

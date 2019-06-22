@@ -44,6 +44,7 @@
                     </li>
                 </ul>
             </li>
+            <li @if ($menu1 == "UserManagement") class="active" @endif><a href="{{route('user.management.index')}}"><i class="fa fa-user"></i> <span>User Management</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

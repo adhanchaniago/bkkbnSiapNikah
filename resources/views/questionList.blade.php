@@ -10,12 +10,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Daftar Pertanyaan
+            Daftar Kategori
             <small>{{$category->name}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li class="active">Daftar Pertanyaan</li>
+            <li class="active">Pertanyaan</li>
         </ol>
     </section>
     
