@@ -21,6 +21,24 @@
     
     <!-- Main content -->
     <section class="content">
+        @if (Session::get('questionCreated'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                <h4><strong>Pertanyaan berhasil ditambahkan.</strong></h4>
+            </div>
+        @endif
+        @if (Session::get('questionUpdated'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                <h4><strong>Pertanyaan berhasil diperbarui.</strong></h4>
+            </div>
+        @endif
+        @if (Session::get('questionDeleted'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                <h4><strong>Berhasil menghapus pertanyaan.</strong></h4>
+            </div>
+        @endif
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-md-6">
@@ -37,6 +55,14 @@
                             <div class="form-group">
                                 <label for="">Pertanyaan</label>
                                 <input type="text" class="form-control" id="" name="question" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Pertanyaan Khusus Untuk Gender</label>
+                                <select class="form-control" name="gender" required>
+                                    <option value="all" selected>All</option>
+                                    <option value="male">Laki-laki</option>
+                                    <option value="female">Perempuan</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Jawaban yang benar</label>
@@ -76,6 +102,7 @@
                                     <th style="width:10px; text-align:center">No</th>
                                     <th>Pertanyaan</th>
                                     <th style="width:50px; text-align:left">Ubah</th>
+                                    <th style="width:50px; text-align:left">Hapus</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,6 +111,7 @@
                                     <td>{{$i+1}}</td>
                                     <td>{{$questions[$i]->question}}</td>
                                     <td><a href="{{route('category.detail.question.edit.page',['categoryId'=>$category->id,'questionId'=>$questions[$i]->id])}}"><button type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></a></td>
+                                    <td><a href="{{route('category.detail.question.delete.page',['categoryId'=>$category->id,'questionId'=>$questions[$i]->id])}}"><button type="button" class="btn btn-danger btn-flat btn-block">HAPUS</button></a></td>
                                 </tr>
                                 @endfor
                             </tbody>
@@ -92,6 +120,7 @@
                                     <th>No</th>
                                     <th>Pertanyaan</th>
                                     <th>Ubah</th>
+                                    <th>Hapus</th>
                                 </tr>
                             </tfoot>
                         </table>

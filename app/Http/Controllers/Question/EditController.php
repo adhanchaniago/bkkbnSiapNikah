@@ -43,8 +43,8 @@ class EditController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function edit(Request $request, $categoryId, $questionId){
-        $data = $request->only('question','answer','correctAnswerRecommendation','wrongAnswerRecommendation');
+        $data = $request->only('question','answer','correctAnswerRecommendation','wrongAnswerRecommendation','gender');
         $question = Question::where('id','=',$questionId)->first()->update($data);
-        return redirect('/category/detail/id/'.$categoryId);
+        return redirect('/category/detail/id/'.$categoryId)->with(['questionUpdated'=>true]);
     }
 }

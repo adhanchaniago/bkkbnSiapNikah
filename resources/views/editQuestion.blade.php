@@ -39,6 +39,14 @@
                                 <input type="text" class="form-control" id="" name="question" value="{{$question->question}}" required>
                             </div>
                             <div class="form-group">
+                                <label for="">Pertanyaan Khusus Untuk Gender</label>
+                                <select class="form-control" name="gender" required>
+                                    <option value="all" @if($question->gender == "all") selected @endif>All</option>
+                                    <option value="male" @if($question->gender == "male") selected @endif>Laki-laki</option>
+                                    <option value="female" @if($question->gender == "female") selected @endif>Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Jawaban yang benar</label>
                                 <select class="form-control" name="answer" required>
                                     <option @if ($question->answer == 1)
@@ -61,7 +69,7 @@
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary pull-right">Tambah</button>
+                            <button type="submit" class="btn btn-primary pull-right">Ubah</button>
                         </div>
                     </form>
                 </div>

@@ -36,12 +36,13 @@ class CreateController extends Controller
     public function create(Request $request, $categoryId){
         $question = Question::create([
             'question' => $request->question,
+            'gender' => $request->gender,
             'answer' => $request->answer,
             'correctAnswerRecommendation' => $request->correctAnswerRecommendation,
             'wrongAnswerRecommendation' => $request->wrongAnswerRecommendation,
             'categoryId' => $categoryId,
         ]);
-        dd($question);
-        return redirect('/category/detail/id/'.$categoryId);
+        // dd($question);
+        return redirect('/category/detail/id/'.$categoryId)->with(['questionCreated'=>true]);
     }
 }

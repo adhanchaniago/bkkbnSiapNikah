@@ -12,6 +12,6 @@ class Question extends Model
      * @var array
      */
     protected $fillable = [
-        'question','answer','correctAnswerRecommendation','wrongAnswerRecommendation','categoryId'
+        'question','answer','correctAnswerRecommendation','wrongAnswerRecommendation','categoryId', 'gender'
     ];
 }

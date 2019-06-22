@@ -31,6 +31,8 @@ Route::namespace('Question')->prefix('/category/detail')->name('category.detail.
         Route::post('create/{categoryId}','CreateController@create')->name('create');
         Route::get('edit/{categoryId}/{questionId}','EditController@index')->name('edit.page');
         Route::post('edit/{categoryId}/{questionId}','EditController@edit')->name('edit');
+        Route::get('delete/{categoryId}/{questionId}','DeleteController@index')->name('delete.page');
+        Route::post('delete/{categoryId}/{questionId}','DeleteController@remove')->name('delete');
     });
 });
 Route::namespace('User')->prefix('/user-management')->name('user.management.')->group(function(){
