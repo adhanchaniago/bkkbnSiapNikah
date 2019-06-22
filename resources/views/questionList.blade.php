@@ -26,8 +26,8 @@
             <div class="col-md-6">
                 <!-- general form elements -->
                 <div class="box box-primary">
-                    {{-- <div class="box-header with-border">
-                        <h3 class="box-title">Ubah Kategori {{$category->name}}</h3>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tambah Pertanyaan{{--$category->name--}}</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -35,18 +35,69 @@
                         @csrf
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="">Nama Kategori</label>
-                                <input type="text" class="form-control" id="" name="name" value="{{$category->name}}" required>
+                                <label for="">Pertanyaan</label>
+                                <input type="text" class="form-control" id="" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jawaban yang benar</label>
+                                <select class="form-control">
+                                    <option>Ya</option>
+                                    <option>Tidak</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Rekomendasi Bila Jawaban Benar</label>
+                                <input type="text" class="form-control" id="" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Rekomendasi Bila Jawaban Salah</label>
+                                <input type="text" class="form-control" id="" name="name" required>
                             </div>
                         </div>
                         <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                            <button type="submit" class="btn btn-primary pull-right">Tambah</button>
                         </div>
-                    </form> --}}
+                    </form>
                 </div>
                 <!-- /.box -->
+            </div>
+            <div class="col-md-6">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Daftar Kategori Pertanyaan</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="question-list" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="width:10px; text-align:center">No</th>
+                                    <th>Name</th>
+                                    <th style="width:50px; text-align:center">Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for ($i = 0; $i < count($questions); $i++)
+                                <tr>
+                                    <td>{{$i+1}}</td>
+                                    <td>{{$questions[$i]->question}}</td>
+                                    <td><a href="{{route('category.edit.page',['id'=>$questions[$i]->id])}}"><button type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></a></td>
+                                </tr>
+                                @endfor
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
             </div>
         </div>
         <!-- /.row -->
@@ -57,18 +108,18 @@
 
 @section('script')
 <!-- DataTables -->
-<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- page script -->
 <script>
     $(function () {
-      $('#category-list').DataTable({
-      'paging'      : false,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : false,
-      'autoWidth'   : true
+        $('#question-list').DataTable({
+        'paging'      : false,
+        'lengthChange': true,
+        'searching'   : true,
+        'ordering'    : true,
+        'info'        : false,
+        'autoWidth'   : true
     })
     })
 </script>

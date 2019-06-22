@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Question;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Category;
 use App\Question;
 
-class IndexController extends Controller
+class CreateController extends Controller
 {
     /**
      * Sidebar parameter
@@ -17,7 +16,6 @@ class IndexController extends Controller
     public $menu1 = 'Category';
     public $menu2 = 'List';
     public $menu3;
-    public $categoryList;
     
     /**
      * Create a new controller instance.
@@ -31,20 +29,18 @@ class IndexController extends Controller
     }
 
     /**
-     * Show the create category page.
+     * Entry new question to database.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request,$id)
-    {
-        $category = Category::where('id','=',$id)->first();
-        $questions = Question::where('categoryId','=',$id)->get();
-        $categorySidebarList = $request->categorySidebarList;
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $category->id;
-        return view('questionList',compact('menu1','menu2','menu3','category','categorySidebarList','questions'));
+    public function create(Request $request, $categoryId){
+        $question = Question::create([
+            'question' => $request->question,
+            'answer' => $request->answer,
+            'correctAnswerRecommendation' => $request->correctAnswerRecommendation,
+            'wrongAnswerRecommendation' => $request->wrongAnswerRecommendation,
+            'categoryId' => $categoryId,
+        ]);
+        return redirect('/category/detail/id/'.$categoryId);
     }
-
-    
 }

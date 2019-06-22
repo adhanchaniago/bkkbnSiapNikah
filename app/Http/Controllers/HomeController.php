@@ -21,6 +21,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('categories');
     }
 
     /**
@@ -34,6 +35,7 @@ class HomeController extends Controller
         $menu2 = null;
         $menu3 = null;
         $categorySidebarList = $request->categorySidebarList;
+        // dd($request->categorySidebarList);
         return view('home',compact('menu1','menu2','menu3','categorySidebarList'));
     }
 }
