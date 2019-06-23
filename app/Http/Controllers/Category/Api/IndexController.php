@@ -9,11 +9,11 @@ use App\Category;
 class IndexController extends Controller
 {
     public function index(){
-        $categories = Category::all();
+        $categories = Category::select('id','name')->get();
         $categoriesFilled = array();
         for ($i=0; $i < count($categories); $i++) { 
             $category = $categories[$i];
-            $questions = $categories[$i]->questions()->get();
+            $questions = $categories[$i]->questions()->select('id', 'question', 'gender')->get();
             $obj = (object) ['category'=>$category,'questions'=>$questions];
             array_push($categoriesFilled,$obj);
         }

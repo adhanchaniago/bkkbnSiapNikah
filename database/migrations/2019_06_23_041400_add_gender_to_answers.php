@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddGenderToQuestions extends Migration
+class AddGenderToAnswers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddGenderToQuestions extends Migration
      */
     public function up()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            $table->string('gender')->default('all')->after('answer');
+        Schema::table('answers', function (Blueprint $table) {
+            $table->string('gender')->after('age');
         });
     }
 
@@ -25,7 +25,7 @@ class AddGenderToQuestions extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $table) {
+        Schema::table('answers', function (Blueprint $table) {
             $table->dropColumn('gender');
         });
     }
