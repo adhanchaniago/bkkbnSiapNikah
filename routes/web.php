@@ -24,6 +24,8 @@ Route::namespace('Category')->prefix('/category')->name('category.')->group(func
     Route::post('/create', 'CreateController@create')->name('create');
     Route::get('/edit/id/{id}', 'EditController@index')->name('edit.page');
     Route::post('/edit/id/{id}', 'EditController@edit')->name('edit');
+    Route::get('/delete/id/{categoryId}', 'DeleteController@index')->name('delete.page');
+    Route::post('/delete/id/{categoryId}', 'DeleteController@remove')->name('delete');
 });
 Route::namespace('Question')->prefix('/category/detail')->name('category.detail.')->group(function(){
     Route::get('/id/{id}', 'IndexController@index')->name('id');

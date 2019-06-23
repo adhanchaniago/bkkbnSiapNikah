@@ -33,6 +33,12 @@
                 <h4><strong>Berhasil mengubah kategori menjadi {{$message->name}}.</strong></h4>
             </div>
         @endif
+        @if (Session::get('deletedCategory'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                <h4><strong>Kategori berhasil dihapus.</strong></h4>
+            </div>
+        @endif
         <!-- Small boxes (Stat box) -->
         <div class="row">
             <div class="col-md-6">
@@ -72,6 +78,7 @@
                                 <tr>
                                     <th style="width:10px; text-align:center">No</th>
                                     <th>Kategori</th>
+                                    <th style="width:50px; text-align:left">Hapus</th>
                                     <th style="width:50px; text-align:left">Ubah</th>
                                 </tr>
                             </thead>
@@ -80,6 +87,7 @@
                                 <tr>
                                     <td>{{$i+1}}</td>
                                     <td><a href="{{route('category.detail.id',['id'=>$categories[$i]->id])}}">{{$categories[$i]->name}}</a></td>
+                                    <td><a href="{{route('category.delete.page',['id'=>$categories[$i]->id])}}"><button type="button" class="btn btn-danger btn-flat btn-block">HAPUS</button></a></td>
                                     <td><a href="{{route('category.edit.page',['id'=>$categories[$i]->id])}}"><button type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></a></td>
                                 </tr>
                                 @endfor
@@ -88,6 +96,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Kategori</th>
+                                    <th>Hapus</th>
                                     <th>Ubah</th>
                                 </tr>
                             </tfoot>

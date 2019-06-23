@@ -16,7 +16,6 @@ class CreateController extends Controller
     public $menu1 = 'Category';
     public $menu2 = 'Create';
     public $menu3 = null;
-    public $categoryList;
     
     /**
      * Create a new controller instance.
