@@ -17,6 +17,7 @@ class IndexController extends Controller
             $obj = (object) ['category'=>$category,'questions'=>$questions];
             array_push($categoriesFilled,$obj);
         }
-        return $categoriesFilled;
+        $response = (object) ['status'=>200,'message'=>'Berhasil mengambil data','data'=>$categoriesFilled];
+        return response()->json($response,200);
     }
 }

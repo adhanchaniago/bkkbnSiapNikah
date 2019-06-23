@@ -12,6 +12,16 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'age', 'gender', 'location', 'longitude', 'latitude', 'answer'
+        'name', 'age', 'gender', 'location', 'longitude', 'latitude', 'answer', 'score'
+    ];
+
+    /**
+     * Using atribute casting 
+     * https://laravel.com/docs/5.8/eloquent-mutators#attribute-casting
+     * 
+     * @var array
+     */
+    protected $casts = [
+        'answer' => 'array'
     ];
 }

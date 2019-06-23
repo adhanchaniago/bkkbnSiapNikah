@@ -23,3 +23,6 @@ Route::namespace('Question\Api')->prefix('/question')->group(function(){
 Route::namespace('Category\Api')->prefix('/category')->group(function(){
     Route::get('/list','IndexController@index');
 });
+Route::namespace('Answer\Api')->prefix('/answer')->group(function(){
+    Route::post('/create','CreateController@create');
+});
