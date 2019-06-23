@@ -43,3 +43,6 @@ Route::namespace('User')->prefix('/user-management')->name('user.management.')->
     Route::get('/delete/{userId}','DeleteController@index')->name('delete.page');
     Route::post('/delete/{userId}','DeleteController@remove')->name('delete');
 });
+Route::namespace('Answer')->prefix('/questionnaire')->name('questionnaire.')->group(function(){
+    Route::get('/','IndexController@index')->name('index');
+});

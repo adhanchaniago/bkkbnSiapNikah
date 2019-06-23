@@ -14,7 +14,7 @@ class CreateController extends Controller
     protected function validator(array $data){
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'age' => ['required', 'numeric','digits_between:1,3'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'gender' => ['required', Rule::in(['male','female'])],
             'location' => ['required', 'string', 'max:255'],
             'longitude' => ['required', 'numeric'],
