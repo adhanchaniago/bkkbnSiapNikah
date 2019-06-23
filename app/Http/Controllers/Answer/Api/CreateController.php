@@ -56,6 +56,7 @@ class CreateController extends Controller
                 }
             }
         }
+        $score = round(100*$score/count($correctAnswers),2);
         return array('score'=>$score,'recommendations'=>$recommendations);
     }
 
