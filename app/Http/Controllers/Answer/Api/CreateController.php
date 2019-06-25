@@ -42,13 +42,15 @@ class CreateController extends Controller
             for ($j=0; $j < count($answers); $j++) { 
                 $answer = (Object) $answers[$j];
                 if($answer->id == $correctAnswer->id){
+                    if($answer->answer == 0) $recommendation = $correctAnswer->wrongAnswerRecommendation;
+                    else $recommendation = $correctAnswer->correctAnswerRecommendation;
                     if($answer->answer==$correctAnswer->answer){
                         $score+=1;
-                        $temp = (object)['id'=>$correctAnswer->id,'question'=>$correctAnswer->question,'recommendation'=>$correctAnswer->correctAnswerRecommendation];
+                        $temp = (object)['id'=>$correctAnswer->id,'question'=>$correctAnswer->question,'recommendation'=>$recommendation];
                         array_push($recommendations,$temp);
                     }
                     else{
-                        $temp = (object) ['id'=>$correctAnswer->id,'question'=>$correctAnswer->question,'recommendation'=>$correctAnswer->wrongAnswerRecommendation];
+                        $temp = (object) ['id'=>$correctAnswer->id,'question'=>$correctAnswer->question,'recommendation'=>$recommendation];
                         array_push($recommendations,$temp);
                     }
                     array_splice($answers,$j,1);

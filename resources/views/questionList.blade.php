@@ -72,11 +72,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Rekomendasi Bila Jawaban Benar</label>
+                                <label for="">Rekomendasi Bila Jawaban Ya</label>
                                 <textarea class="form-control" rows="4" placeholder="" name="correctAnswerRecommendation" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="">Rekomendasi Bila Jawaban Salah</label>
+                                <label for="">Rekomendasi Bila Jawaban Tidak</label>
                                 <textarea class="form-control" rows="4" placeholder="" name="wrongAnswerRecommendation" required></textarea>
                             </div>
                         </div>
