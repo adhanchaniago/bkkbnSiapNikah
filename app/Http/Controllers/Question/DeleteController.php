@@ -52,7 +52,7 @@ class DeleteController extends Controller
      */
     protected function delete($questionId)
     {
-        return Question::where('id','=',$questionId)->first()->forceDelete();
+        return Question::where('id','=',$questionId)->first()->delete();
         // $categoryId = $question->categoryId;
         // $question->forceDelete();
         // return $categoryId;
