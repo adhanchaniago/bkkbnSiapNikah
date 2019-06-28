@@ -8,4 +8,8 @@ class City extends Model
 {
     protected $table = 'cities';
     public $timestamps = false;
+    public function province()
+	{
+	    return $this->belongsTo(Province::class, 'province_id');
+	}
 }

@@ -29,4 +29,6 @@ Route::namespace('Answer\Api')->prefix('/answer')->group(function(){
 });
 Route::namespace('Wilayah\Api')->prefix('/region')->group(function(){
     Route::get('/cities','CityController@GetCities');
+    Route::get('/provinces','ProvinceController@GetProvinces');
+    Route::get('/province/{id}','ProvinceController@GetCitiesByProvinceId');
 });
