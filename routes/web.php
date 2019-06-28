@@ -49,4 +49,5 @@ Route::namespace('Answer')->prefix('/questionnaire')->name('questionnaire.')->gr
     Route::get('/','IndexController@index')->name('index');
     Route::get('/delete/{id}','DeleteController@index')->name('delete.page');
     Route::delete('/delete/{id}','DeleteController@delete')->name('delete');
+    Route::get('/export','ExportController@export')->name('export');
 });
