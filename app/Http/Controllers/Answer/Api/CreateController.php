@@ -16,6 +16,7 @@ class CreateController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'gender' => ['required', Rule::in(['male','female'])],
+            'age' => ['required', 'numeric'],
             'location' => ['required', 'string', 'max:255'],
             'longitude' => ['required', 'numeric'],
             'latitude' => ['required', 'numeric'],

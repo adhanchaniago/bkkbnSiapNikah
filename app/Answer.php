@@ -12,7 +12,7 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'gender', 'location', 'longitude', 'latitude', 'answer', 'score'
+        'name', 'email', 'gender', 'location', 'longitude', 'latitude', 'answer', 'score', 'age'
     ];
 
     /**

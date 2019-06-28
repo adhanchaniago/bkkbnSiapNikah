@@ -24,13 +24,13 @@
         @if (Session::get('deletedQuestionnaireSuccessed'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button> 
-                <h4><strong>Berhasil menghapus jawaban.</strong></h4>
+                <h4><strong>Berhasil menghapus respon.</strong></h4>
             </div>
         @endif
         @if (Session::get('deleteQuestionnaireFailed'))
             <div class="alert alert-warning alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button> 
-                <h4><strong>Gagal menghapus jawaban.</strong></h4>
+                <h4><strong>Gagal menghapus respon.</strong></h4>
             </div>
         @endif
         <!-- Small boxes (Stat box) -->
@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Tabel Hasil Kuesioner</h3>
+                        <h3 class="box-title">Tabel Respon Hasil Kuesioner</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -110,6 +110,10 @@
                                         <input type="text" class="form-control" id="responden-gender" disabled>
                                     </div>
                                     <div class="form-group">
+                                        <label>Usia</label>
+                                        <input type="text" class="form-control" id="responden-age" disabled>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Lokasi</label>
                                         <input type="text" class="form-control" id="responden-location" disabled>
                                     </div>
@@ -153,6 +157,10 @@
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
                                         <input type="text" class="form-control" id="delete-responden-gender" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Usia</label>
+                                        <input type="text" class="form-control" id="delete-responden-age" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label>Lokasi</label>
@@ -208,6 +216,7 @@
             document.getElementById("responden-name").value = result.data.name;
             document.getElementById("responden-email").value = result.data.email;
             document.getElementById("responden-gender").value = (result.data.gender=="male"?"Laki-laki":"Perempuan");
+            document.getElementById("responden-age").value = result.data.age;
             document.getElementById("responden-location").value = result.data.location;
             document.getElementById("responden-score").value = result.data.score;
             document.getElementById("answer-table").innerHTML = "";
@@ -231,6 +240,7 @@
             document.getElementById("delete-responden-name").value = result.data.name;
             document.getElementById("delete-responden-email").value = result.data.email;
             document.getElementById("delete-responden-gender").value = (result.data.gender=="male"?"Laki-laki":"Perempuan");
+            document.getElementById("delete-responden-age").value = result.data.age;
             document.getElementById("delete-responden-location").value = result.data.location;
             document.getElementById("delete-responden-score").value = result.data.score;
             document.getElementById("delete-responden-form").action = "{{Request::url()}}/delete/"+result.data.id;
