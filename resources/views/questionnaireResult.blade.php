@@ -118,6 +118,7 @@
                                     </div>
                                     <table class="table table-bordered table-striped">
                                         <thead>
+                                            <th style="width:20px">No</th>
                                             <th>Pertanyaan</th>
                                             <th style="width:50px">Jawaban</th>
                                         </thead>
@@ -170,10 +171,13 @@
             document.getElementById("responden-gender").value = (result.data.gender=="male"?"Laki-laki":"Perempuan");
             document.getElementById("responden-location").value = result.data.location;
             document.getElementById("responden-score").value = result.data.score;
+            document.getElementById("answer-table").innerHTML = "";
             var table = "";
             for (let i = 0; i < result.data.answer.length; i++) {
                 var tr = "<tr>";
-                tr += "<td>"+result.data.answer[i].id+"</td>";
+                var no = 1+i;
+                tr += "<td>"+no+"</td>";
+                tr += "<td>"+result.data.answer[i].question+"</td>";
                 tr += "<td>"+(result.data.answer[i].answer==0?"Tidak":"Ya")+"</td>";
                 tr += "</tr>";
                 table += tr;
