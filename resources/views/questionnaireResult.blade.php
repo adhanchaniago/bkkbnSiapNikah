@@ -87,6 +87,7 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        <a href="{{route('questionnaire.export')}}"><button class="btn btn-primary btn-flat btn-block pull-right">Download</button></a>
                     </div>
                     <div class="modal fade" id="detail-modal">
                         <div class="modal-dialog">
