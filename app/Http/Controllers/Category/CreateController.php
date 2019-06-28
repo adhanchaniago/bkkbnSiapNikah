@@ -25,7 +25,6 @@ class CreateController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
 
     /**
@@ -33,15 +32,13 @@ class CreateController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index()
     {
         $categories = Category::orderBy('id')->get();
-        // dd($request->categorySidebarList);
-        $categorySidebarList = $request->categorySidebarList;
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $this->menu3;
-        return view('createCategory',compact('menu1','menu2','menu3','categories','categorySidebarList'));
+        return view('createCategory',compact('menu1','menu2','menu3','categories'));
     }
 
     /**

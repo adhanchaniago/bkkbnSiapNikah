@@ -25,7 +25,6 @@ class EditController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
     
     /**
@@ -36,12 +35,10 @@ class EditController extends Controller
     public function index(Request $request,$id)
     {
         $category = Category::where('id','=',$id)->first();
-        // dd($categories);
-        $categorySidebarList = $request->categorySidebarList;
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $this->menu3;
-        return view('editCategory',compact('menu1','menu2','menu3','category','categorySidebarList'));
+        return view('editCategory',compact('menu1','menu2','menu3','category'));
     }
 
     /**

@@ -23,7 +23,7 @@ class IndexController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
+        // $this->middleware('categories');
     }
 
     /**
@@ -31,13 +31,13 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index()
     {
         $answers = Answer::all();
         $menu1 = $this->menu1;
         $menu2 = null;
         $menu3 = null;
-        $categorySidebarList = $request->categorySidebarList;
-        return view('questionnaireResult',compact('menu1','menu2','menu3','categorySidebarList','answers'));
+        // $categorySidebarList = $request->categorySidebarList;
+        return view('questionnaireResult',compact('menu1','menu2','menu3','answers'));
     }
 }

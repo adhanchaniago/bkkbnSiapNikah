@@ -35,10 +35,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            @for ($i = 0; $i < count($categorySidebarList); $i++)
-                            <li @if ($menu3 == $categorySidebarList[$i]->id)
+                            <p hidden>{{$categorySidebarLists = \App\Category::orderBy('id')->get()}}</p>
+                            @for ($i = 0; $i < count($categorySidebarLists); $i++)
+                            <li @if ($menu3 == $categorySidebarLists[$i]->id)
                                 class="active"
-                            @endif><a href="{{route('category.detail.id',['id'=>$categorySidebarList[$i]->id])}}"><i class="fa fa-circle-o"></i> {{$categorySidebarList[$i]->name}}</a></li>
+                            @endif><a href="{{route('category.detail.id',['id'=>$categorySidebarLists[$i]->id])}}"><i class="fa fa-circle-o"></i> {{$categorySidebarLists[$i]->name}}</a></li>
                             @endfor
                         </ul>
                     </li>

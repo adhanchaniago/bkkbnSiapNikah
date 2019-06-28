@@ -20,7 +20,6 @@ class DeleteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
 
     /**
@@ -58,13 +57,12 @@ class DeleteController extends Controller
             return redirect($this->redirectTo)->with(['deleteQuestionnaireFailed'=>false]);
     }
 
-    public function index(Request $request, $id){
+    public function index($id){
         $answer = Answer::where('id','=',$id)->first();
         // dd($answer);
         $menu1 = $this->menu1;
         $menu2 = null;
         $menu3 = null;
-        $categorySidebarList = $request->categorySidebarList;
-        return view('questionnaireDelete',compact('menu1','menu2','menu3','categorySidebarList','answer'));
+        return view('questionnaireDelete',compact('menu1','menu2','menu3','answer'));
     }
 }

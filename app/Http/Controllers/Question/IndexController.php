@@ -27,7 +27,6 @@ class IndexController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
 
     /**
@@ -39,11 +38,10 @@ class IndexController extends Controller
     {
         $category = Category::where('id','=',$id)->first();
         $questions = Question::where('categoryId','=',$id)->get();
-        $categorySidebarList = $request->categorySidebarList;
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $category->id;
-        return view('questionList',compact('menu1','menu2','menu3','category','categorySidebarList','questions'));
+        return view('questionList',compact('menu1','menu2','menu3','category','questions'));
     }
 
     

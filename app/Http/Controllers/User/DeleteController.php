@@ -20,7 +20,6 @@ class DeleteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
     
     /**
@@ -61,13 +60,12 @@ class DeleteController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request, $userId)
+    public function index($userId)
     {
         $user = User::where('id','=',$userId)->first();
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $this->menu3;
-        $categorySidebarList = $request->categorySidebarList;
-        return view('deleteUser',compact('menu1','menu2','menu3','categorySidebarList','user'));
+        return view('deleteUser',compact('menu1','menu2','menu3','user'));
     }
 }

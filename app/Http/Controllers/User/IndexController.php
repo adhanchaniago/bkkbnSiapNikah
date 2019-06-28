@@ -25,7 +25,6 @@ class IndexController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
 
     /**
@@ -39,7 +38,6 @@ class IndexController extends Controller
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $this->menu3;
-        $categorySidebarList = $request->categorySidebarList;
-        return view('userManagement',compact('menu1','menu2','menu3','categorySidebarList','users'));
+        return view('userManagement',compact('menu1','menu2','menu3','users'));
     }
 }

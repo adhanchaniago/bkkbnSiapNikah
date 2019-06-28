@@ -25,16 +25,14 @@ class DeleteController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
 
-    public function index(Request $request,$categoryId){
-        $categorySidebarList = $request->categorySidebarList;
+    public function index($categoryId){
         $category = Category::where('id','=',$categoryId)->first();
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $categoryId;
-        return view('deleteCategory',compact('menu1','menu2','menu3','categorySidebarList','category'));
+        return view('deleteCategory',compact('menu1','menu2','menu3','category'));
     }
 
     /**

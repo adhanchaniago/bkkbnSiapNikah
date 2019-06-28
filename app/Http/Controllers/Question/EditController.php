@@ -25,16 +25,14 @@ class EditController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('categories');
     }
 
-    public function index(Request $request,$categoryId,$questionId){
-        $categorySidebarList = $request->categorySidebarList;
+    public function index($categoryId,$questionId){
         $question = Question::where('id','=',$questionId)->first();
         $menu1 = $this->menu1;
         $menu2 = $this->menu2;
         $menu3 = $categoryId;
-        return view('editQuestion',compact('menu1','menu2','menu3','question','categorySidebarList','categoryId'));
+        return view('editQuestion',compact('menu1','menu2','menu3','question','categoryId'));
     }
 
     /**
