@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class EditController extends Controller
 {
-    public $menu1 = 'UserManagement';
-    public $menu2 = '';
-    public $menu3;
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -79,9 +75,6 @@ class EditController extends Controller
     public function index($userId)
     {
         $user = User::where('id','=',$userId)->first();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $this->menu3;
-        return view('editUser',compact('menu1','menu2','menu3','user'));
+        return view('editUser',compact('user'));
     }
 }

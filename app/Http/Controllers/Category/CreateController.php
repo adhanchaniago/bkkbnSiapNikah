@@ -9,15 +9,6 @@ use App\Category;
 class CreateController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'Category';
-    public $menu2 = 'Create';
-    public $menu3 = null;
-    
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -35,10 +26,7 @@ class CreateController extends Controller
     public function index()
     {
         $categories = Category::orderBy('id')->get();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $this->menu3;
-        return view('createCategory',compact('menu1','menu2','menu3','categories'));
+        return view('createCategory',compact('categories'));
     }
 
     /**

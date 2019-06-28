@@ -8,15 +8,6 @@ use App\Answer;
 
 class DeleteController extends Controller
 {
-    /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'QuestionnaireResult';
-    public $menu2 = null;
-    public $menu3 = null;
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -59,10 +50,6 @@ class DeleteController extends Controller
 
     public function index($id){
         $answer = Answer::where('id','=',$id)->first();
-        // dd($answer);
-        $menu1 = $this->menu1;
-        $menu2 = null;
-        $menu3 = null;
-        return view('questionnaireDelete',compact('menu1','menu2','menu3','answer'));
+        return view('questionnaireDelete',compact('answer'));
     }
 }

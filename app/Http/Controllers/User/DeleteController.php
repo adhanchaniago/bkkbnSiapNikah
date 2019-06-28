@@ -8,10 +8,6 @@ use App\User;
 
 class DeleteController extends Controller
 {
-    public $menu1 = 'UserManagement';
-    public $menu2 = '';
-    public $menu3;
-
     /**
      * Create a new controller instance.
      *
@@ -63,9 +59,6 @@ class DeleteController extends Controller
     public function index($userId)
     {
         $user = User::where('id','=',$userId)->first();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $this->menu3;
-        return view('deleteUser',compact('menu1','menu2','menu3','user'));
+        return view('deleteUser',compact('user'));
     }
 }

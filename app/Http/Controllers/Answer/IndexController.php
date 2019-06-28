@@ -9,13 +9,6 @@ use App\Answer;
 class IndexController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'QuestionnaireResult';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -34,10 +27,6 @@ class IndexController extends Controller
     public function index()
     {
         $answers = Answer::all();
-        $menu1 = $this->menu1;
-        $menu2 = null;
-        $menu3 = null;
-        // $categorySidebarList = $request->categorySidebarList;
-        return view('questionnaireResult',compact('menu1','menu2','menu3','answers'));
+        return view('questionnaireResult',compact('answers'));
     }
 }

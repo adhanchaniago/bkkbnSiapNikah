@@ -9,15 +9,6 @@ use App\Question;
 class DeleteController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'Category';
-    public $menu2 = 'List';
-    public $menu3;
-    
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -29,10 +20,7 @@ class DeleteController extends Controller
 
     public function index($categoryId,$questionId){
         $question = Question::where('id','=',$questionId)->first();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $categoryId;
-        return view('deleteQuestion',compact('menu1','menu2','menu3','question','categoryId'));
+        return view('deleteQuestion',compact('question','categoryId'));
     }
 
     /**

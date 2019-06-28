@@ -9,15 +9,6 @@ use App\Category;
 class DeleteController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'Category';
-    public $menu2 = 'Create';
-    public $menu3 = null;
-    
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -29,10 +20,7 @@ class DeleteController extends Controller
 
     public function index($categoryId){
         $category = Category::where('id','=',$categoryId)->first();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $categoryId;
-        return view('deleteCategory',compact('menu1','menu2','menu3','category'));
+        return view('deleteCategory',compact('category'));
     }
 
     /**

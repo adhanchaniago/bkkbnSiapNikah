@@ -9,15 +9,6 @@ use App\Category;
 class EditController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'Category';
-    public $menu2 = 'Create';
-    public $menu3 = null;
-    
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -35,10 +26,7 @@ class EditController extends Controller
     public function index(Request $request,$id)
     {
         $category = Category::where('id','=',$id)->first();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $this->menu3;
-        return view('editCategory',compact('menu1','menu2','menu3','category'));
+        return view('editCategory',compact('category'));
     }
 
     /**

@@ -9,15 +9,6 @@ use App\Question;
 class CreateController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'Category';
-    public $menu2 = 'List';
-    public $menu3;
-    
-    /**
      * Create a new controller instance.
      *
      * @return void

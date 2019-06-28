@@ -9,15 +9,6 @@ use App\User;
 class IndexController extends Controller
 {
     /**
-     * Sidebar parameter
-     *
-     * @return void
-     */
-    public $menu1 = 'UserManagement';
-    public $menu2 = '';
-    public $menu3;
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -35,9 +26,6 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
-        $menu1 = $this->menu1;
-        $menu2 = $this->menu2;
-        $menu3 = $this->menu3;
-        return view('userManagement',compact('menu1','menu2','menu3','users'));
+        return view('userManagement',compact('users'));
     }
 }
