@@ -25,6 +25,7 @@ Route::namespace('Category\Api')->prefix('/category')->group(function(){
 });
 Route::namespace('Answer\Api')->prefix('/answer')->group(function(){
     Route::post('/create','CreateController@create');
+    Route::get('/get/{id}','DetailController@get')->name('api.answer.get');
 });
 Route::namespace('Wilayah\Api')->prefix('/region')->group(function(){
     Route::get('/cities','CityController@GetCities');
