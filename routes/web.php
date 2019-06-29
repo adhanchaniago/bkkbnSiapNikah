@@ -51,3 +51,13 @@ Route::namespace('Answer')->prefix('/questionnaire')->name('questionnaire.')->gr
     Route::delete('/delete/{id}','DeleteController@delete')->name('delete');
     Route::get('/export','ExportController@export')->name('export');
 });
+Route::namespace('Message')->prefix('/message')->name('message.')->group(function(){
+    Route::namespace('Welcome')->prefix('/welcome')->name('welcome.')->group(function(){
+        Route::get('/','IndexController@index')->name('index');
+        Route::post('/create','CreateController@create')->name('create');
+        Route::post('/update/{id}','EditController@edit')->name('edit');
+    });
+    Route::namespace('Preface')->prefix('/preface')->name('preface.')->group(function(){
+        Route::get('/','IndexController@index')->name('index');
+    });
+});

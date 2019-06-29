@@ -10,11 +10,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            User
+            Pesan
+            <small>Kata Pengantar</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li class="active">User</li>
+            <li class="active">Pesan</li>
         </ol>
     </section>
     
@@ -44,43 +45,21 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah User Baru</h3>
+                        <h3 class="box-title">Buat Kata Pengantar Baru</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form" method="POST" action="{{route('user.management.create')}}" autocomplete="off">
+                    <form role="form" method="POST" action="#" autocomplete="off">
                         @csrf
                         <div class="box-body">
-                            <div class="form-group @error('name') has-error @enderror">
-                                <label for="">Nama</label>
-                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" autocomplete="new-password" required>
-                                @error('name')
+                            <div class="form-group @error('message') has-error @enderror">
+                                <label for="">Kata Pengantar</label>
+                                <textarea class="form-control" rows="4" name="message" required>{{ old('message') }}</textarea>
+                                @error('message')
                                     <span class="help-block">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                            <div class="form-group @error('email') has-error @enderror">
-                                <label for="">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}" autocomplete="new-password" required>
-                                @error('email')
-                                    <span class="help-block">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group @error('password') has-error @enderror">
-                                <label for="">Password</label>
-                                <input type="password" class="form-control" name="password" autocomplete="new-password" required value="">
-                                @error('password')
-                                    <span class="help-block">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="">Konfirmasi Password</label>
-                                <input type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -98,7 +77,7 @@
                         <h3 class="box-title">Daftar User</h3>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body">
+                    {{-- <div class="box-body">
                         <table id="user-list" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -130,7 +109,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                    </div>
+                    </div> --}}
                     <!-- /.box-body -->
                 </div>
             </div>

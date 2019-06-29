@@ -8,7 +8,7 @@
             </div>
             <div class="pull-left info">
                 <p>{{Auth::user()->name}}</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online {{Route::currentRouteName()}}</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -46,7 +46,19 @@
                 </ul>
             </li>
             <li @if (starts_with(Route::currentRouteName(), 'questionnaire.index')) class="active" @endif><a href="{{route('questionnaire.index')}}"><i class="fa fa-file-text"></i> <span>Hasil Kuesioner</span></a></li>
-            <li @if (starts_with(Route::currentRouteName(), 'user.management.index')) class="active" @endif><a href="{{route('user.management.index')}}"><i class="fa fa-user"></i> <span>User Management</span></a></li>
+            <li @if (starts_with(Route::currentRouteName(), 'user.management.index')) class="active" @endif><a href="{{route('user.management.index')}}"><i class="fa fa-user"></i> <span>User</span></a></li>
+            <li @if (starts_with(Route::currentRouteName(), 'message')) class="treeview active" @else class="treeview" @endif>
+                <a href="#">
+                    <i class="fa fa-envelope"></i> <span>Pesan</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li @if (starts_with(Route::currentRouteName(), 'message.welcome.index')) class="active" @endif><a href="{{route('message.welcome.index')}}"><i class="fa fa-circle-o"></i> <span>Selamat Datang</span></a></li>
+                    <li @if (starts_with(Route::currentRouteName(), 'message.preface.index')) class="active" @endif><a href="{{route('message.preface.index')}}"><i class="fa fa-circle-o"></i> <span>Kata Pengantar</span></a></li>
+                </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
