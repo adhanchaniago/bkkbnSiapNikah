@@ -27,6 +27,12 @@
                 <h4><strong>Pesan selamat datang baru berhasi dibuat.</strong></h4>
             </div>
         @endif
+        @if ($message = Session::get('success-deleted'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button> 
+                <h4><strong>Pesan berhasi dihapus.</strong></h4>
+            </div>
+        @endif
         @if ($message = Session::get('success-edited'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button> 
@@ -74,7 +80,7 @@
             <div class="col-md-6">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Daftar User</h3>
+                        <h3 class="box-title">Daftar Pesan Selamat Datang</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -95,7 +101,7 @@
                                     <td>{{(strlen($messages[$i]->message)>150?substr($messages[$i]->message,0,147).'...':$messages[$i]->message)}}</td>
                                     <td>{{($messages[$i]->isActive==true?"Aktif":"Tidak Aktif")}}</td>
                                     <td><button onclick="editModal('{{route('api.message.welcome.get',['id'=>$messages[$i]->id])}}')" type="button" class="btn btn-primary btn-flat btn-block">UBAH</button></td>
-                                    <td><a href="#"><button type="button" class="btn btn-danger btn-flat btn-block">HAPUS</button></a></td>
+                                    <td><button onclick="deleteModal('{{route('api.message.welcome.get',['id'=>$messages[$i]->id])}}')" type="button" class="btn btn-danger btn-flat btn-block">HAPUS</button></td>
                                 </tr>
                                 @endfor
                             </tbody>
@@ -145,6 +151,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="delete-modal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Apakah Anda Yakin Menghapus Pesan Ini?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Pesan</label>
+                                        <textarea class="form-control" rows="10" name="message" id="delete-message-message" disabled></textarea>
+                                    </div>
+                                    {{-- <div class="form-group">
+                                        <label>Status</label>
+                                        <select name="isActive" id="message-isActive" class="form-control" required>
+                                            <option value="0">Tidak Aktif</option>
+                                            <option value="1">Aktif</option>
+                                        </select>
+                                    </div> --}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                                    <form id="delete-message-form" role="form" method="POST" action="#">
+                                        @csrf
+                                        {{method_field('DELETE')}}
+                                        <button type="submit" class="btn btn-danger pull-right">HAPUS</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,6 +218,15 @@
             document.getElementById("message-form").action = "{{Request::url()}}/update/"+result.data.id;
             console.log("{{Request::url()}}/update/"+result.data.id);
             $('#edit-modal').modal('show');
+        }});
+    }
+    function deleteModal(url){
+        $.ajax({url: url, success: function(result){
+            console.log(result.data);
+            document.getElementById("delete-message-message").value = result.data.message;
+            document.getElementById("delete-message-form").action = "{{Request::url()}}/delete/"+result.data.id;
+            console.log("{{Request::url()}}/delete/"+result.data.id);
+            $('#delete-modal').modal('show');
         }});
     }
 </script>
