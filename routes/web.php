@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',function(){
+    return redirect('/admin');
+});
 
 Route::prefix('/admin')->group(function(){
     Auth::routes();
