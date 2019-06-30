@@ -40,6 +40,6 @@ class EditController extends Controller
         $category->name = $request->name;
         $category->save();
         // dd($categories);
-        return redirect('/category/create')->with(['editedCategory'=>$category]);
+        return redirect()->route('category.create.page')->with(['editedCategory'=>$category]);
     }
 }

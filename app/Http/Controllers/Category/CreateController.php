@@ -39,6 +39,6 @@ class CreateController extends Controller
         $category = Category::create([
             'name' => $request->name
         ]);
-        return redirect('/category/create')->with(['category'=>$category]);
+        return back()->with(['category'=>$category]);
     }
 }

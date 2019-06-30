@@ -50,6 +50,6 @@ class DeleteController extends Controller
     public function remove(Request $request, $categoryId)
     {
         $this->delete($categoryId);
-        return redirect($this->redirectTo)->with(['categoryDeleted'=> true]);
+        return redirect()->route('category.create.page')->with(['categoryDeleted'=> true]);
     }
 }
