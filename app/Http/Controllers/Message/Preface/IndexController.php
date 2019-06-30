@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Message\Preface;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Message;
 
 class IndexController extends Controller
 {
@@ -12,6 +13,7 @@ class IndexController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('message.preface');
+        $messages = Message::where('type','=','preface')->get();
+        return view('message.preface',compact('messages'));
     }
 }

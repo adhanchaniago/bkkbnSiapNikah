@@ -59,6 +59,9 @@ Route::namespace('Message')->prefix('/message')->name('message.')->group(functio
         Route::delete('/delete/{id}','DeleteController@delete')->name('delete');
     });
     Route::namespace('Preface')->prefix('/preface')->name('preface.')->group(function(){
+        Route::post('/create','CreateController@create')->name('create');
+        Route::post('/update/{id}','EditController@edit')->name('edit');
         Route::get('/','IndexController@index')->name('index');
+        Route::delete('/delete/{id}','DeleteController@delete')->name('delete');
     });
 });

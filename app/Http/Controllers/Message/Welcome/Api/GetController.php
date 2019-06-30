@@ -16,4 +16,8 @@ class GetController extends Controller
         $data = Message::find($id);
         return response()->json(['data'=>$data]);
     }
+    public function getFirst(){
+        $data = Message::active()->welcomeMessage()->first();
+        return response()->json(['data'=>$data]);
+    }
 }

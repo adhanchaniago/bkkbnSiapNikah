@@ -35,5 +35,9 @@ Route::namespace('Wilayah\Api')->prefix('/region')->group(function(){
 Route::namespace('Message')->prefix('/message')->name('api.message.')->group(function(){
     Route::namespace('Welcome\Api')->prefix('/welcome')->name('welcome.')->group(function(){
         Route::get('/get/{id}','GetController@get')->name('get');
+        Route::get('/get','GetController@getFirst');
+    });
+    Route::namespace('Preface\Api')->prefix('/preface')->name('preface.')->group(function(){
+        Route::get('/get','GetController@getFirst');
     });
 });
